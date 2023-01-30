@@ -41,3 +41,9 @@ variable "max_size" {
   description = "The maximum number of EC2 Instances in the ASG"
   type        = number
 }
+
+variable "custom_tags" {
+  description = "mapping of customs tags"
+  type  = map(string)
+  default = {}
+}

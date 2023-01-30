@@ -148,6 +148,15 @@ resource "aws_autoscaling_group" "example_autoscaling" {
     value               = "${var.cluster_name}-asg"
     propagate_at_launch = true
   }
+
+  dynamic "tag" {
+      for_each  = var.custom_tags
+      content {
+          key                   = tag.key
+          value                 = tag.value
+          propagate_at_launch   = true
+      }
+  }
 }
 
 # below we will create a load balancer that will distribute traffic accross our ec2 server 
